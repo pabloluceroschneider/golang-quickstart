@@ -16,6 +16,16 @@ func ExerciseOne(dy, dx int) []int {
 	return a
 }
 
+func RemoveElementIndex(array []int, value int) []int{
+	b := append(array[:value], array[value+1:]...)
+	return b
+}
+
+func ExerciseTwo(dy, dx int) [][]int {
+	a := make([][]int, dy)
+	return a
+}
+
 func main() {
 	var a [2]string
 	a[0] = "Hello"
@@ -63,4 +73,14 @@ func main() {
 	res := ExerciseOne(3, 2)
 	fmt.Println("ExerciseOne", res)
 
+	res2 := ExerciseTwo(3, 2)
+	fmt.Printf("ExerciseTwo %v %T", res2, res2)
+	fmt.Println("")
+	fmt.Println("RemoveElementIndex")
+	array := []int{0,1,2,3,4,5,6,7,8,9}
+	removed := RemoveElementIndex(array, 4)
+	fmt.Printf("%v, %v", array, removed)
+
+
+	fmt.Println("")
 }
