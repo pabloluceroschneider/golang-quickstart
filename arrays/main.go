@@ -8,6 +8,11 @@ func Imprimir(a [2]string) {
 	fmt.Print(a)
 }
 
+func RemoveElementIndex(array []int, value int) []int{
+	b := append(array[:value], array[value+1:]...)
+	return b
+}
+
 func ExerciseOne(dy, dx int) []int {
 	a := make([]int, dy)
 	for i := range a {
@@ -16,13 +21,19 @@ func ExerciseOne(dy, dx int) []int {
 	return a
 }
 
-func RemoveElementIndex(array []int, value int) []int{
-	b := append(array[:value], array[value+1:]...)
-	return b
-}
-
 func ExerciseTwo(dy, dx int) [][]int {
 	a := make([][]int, dy)
+	for i := range a {
+		a[i] = []int{dx}
+	}
+	return a
+}
+
+func ExerciseThree(dy, dx int) [][]int {
+	a := make([][]int, dy)
+	for i := range a {
+		a[i] = make([]int, dx)
+	}
 	return a
 }
 
@@ -70,17 +81,18 @@ func main() {
 
 	fmt.Println("board", board)
 
-	res := ExerciseOne(3, 2)
-	fmt.Println("ExerciseOne", res)
-
-	res2 := ExerciseTwo(3, 2)
-	fmt.Printf("ExerciseTwo %v %T", res2, res2)
-	fmt.Println("")
-	fmt.Println("RemoveElementIndex")
+	fmt.Println("\nRemoveElementIndex")
 	array := []int{0,1,2,3,4,5,6,7,8,9}
 	removed := RemoveElementIndex(array, 4)
-	fmt.Printf("%v, %v", array, removed)
+	fmt.Printf("%v, %v\n\n", array, removed)
 
 
-	fmt.Println("")
+	res := ExerciseOne(3, 2)
+	fmt.Println("ExerciseOne", res)					// ExerciseOne [2 2 2]
+
+	res2 := ExerciseTwo(3, 2)
+	fmt.Printf("ExerciseTwo %v - %T\n", res2, res2)	// ExerciseTwo [[2] [2] [2]] - [][]int
+
+	res3 := ExerciseThree(3, 3)
+	fmt.Printf("ExerciseThree %v - %T\n", res3, res3)	// ExerciseThree [[0 0 0] [0 0 0] [0 0 0]] - [][]int
 }
