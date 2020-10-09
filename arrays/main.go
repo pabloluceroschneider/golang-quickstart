@@ -37,6 +37,18 @@ func ExerciseThree(dy, dx int) [][]int {
 	return a
 }
 
+func MatrizDiagonalizada( n int) [][]int{
+	matriz := ExerciseThree(n, n)
+	for i := range matriz{
+		for j := range matriz[i] {
+			if ( i == j ){
+				matriz[i][j] = 1
+			}
+		}
+	}
+	return matriz
+}
+
 func main() {
 	var a [2]string
 	a[0] = "Hello"
@@ -95,4 +107,8 @@ func main() {
 
 	res3 := ExerciseThree(3, 3)
 	fmt.Printf("ExerciseThree %v - %T\n", res3, res3)	// ExerciseThree [[0 0 0] [0 0 0] [0 0 0]] - [][]int
+
+
+	escalonada := MatrizDiagonalizada(4)
+	fmt.Printf("MatrizDiagonalizada %v - %T\n", escalonada, escalonada)	// MatrizDiagonalizada [[1 0 0 0] [1 1 0 0] [1 1 1 0] [1 1 1 1]] - [][]int
 }
