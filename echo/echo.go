@@ -3,10 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo"
 )
 
-type User struct {
+type user struct {
 	Name  string `json:"name" xml:"name" form:"name" query:"name"`
 	Email string `json:"email" xml:"email" form:"email" query:"email"`
 }
@@ -17,7 +17,7 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
-	list := []User{ 
+	list := []user{ 
 		{"Pablo","pablo@gmail.com"}, 
 		{"daniel","daniel@gmail.com"}, 
 		{"Lucero","Lucero@gmail.com"}, 
@@ -28,7 +28,7 @@ func main() {
 	})
 
 	e.POST("/users", func(c echo.Context) error {
-		u := new(User)
+		u := new(user)
 		if err := c.Bind(u); err != nil {
 			return err
 		}
